@@ -23,6 +23,13 @@ public class MainActivityViewModel extends AndroidViewModel {
 
     public void login(String mail, String password){
 
+        if (mail.isEmpty() || password.isEmpty()) {
+            // Mostrar Toast de error
+            Toast.makeText(context, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
         Usuario usuarioEncontrado = ApiClient.login(context, mail, password);
 
         if(usuarioEncontrado != null){
